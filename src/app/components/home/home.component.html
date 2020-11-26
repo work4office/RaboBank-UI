@@ -1,0 +1,4 @@
+<input type="file" (change)="onSelectFile($event)" accept=".csv">&nbsp;&nbsp;
+<small id="errorMessage" *ngIf="errorMsg">*{{errorMsg}}</small>
+<app-data [tableBody]="tableBodyArray" [tableHead]="tableHeadArray" [errMsg]="errorMsg"></app-data>
+

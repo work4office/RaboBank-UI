@@ -1,0 +1,17 @@
+<input *ngIf="tableHead && tableBody" type="text" placeholder="Search here..." [formControl]="searchFormControl">
+<table *ngIf="tableHead && tableBody;else dataNotAvailable">
+	<thead>
+		<tr>
+			<th *ngFor="let tabHead of tableHead; let i = index">{{ tabHead }}
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let tabBody of searchObs | async">
+			<td *ngFor="let tabHead of tableHead">{{ tabBody[tabHead] }}</td>
+		</tr>
+	</tbody>
+</table>
+<ng-template #dataNotAvailable>
+  <ng-container *ngIf="errMsg === undefined">Please import a csv file.</ng-container>
+</ng-template>
